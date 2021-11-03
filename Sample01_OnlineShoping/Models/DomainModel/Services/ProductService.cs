@@ -11,11 +11,14 @@ namespace Sample01_OnlineShoping.Models.DomainModel.Services
 
         #region [- prop -]
         public Models.DomainModel.Aggregations.ProductAggregation.Product Ref_Product { get; set; }
+        public Models.DomainModel.Aggregations.ProductAggregation.ProductCategory Ref_Productcategory { get; set; }
+
 
         #endregion    }
 
 
 
+        #region [- Task -]
 
         #region [- Select() -]
         public List<Models.DomainModel.Aggregations.ProductAggregation.Product> Select()
@@ -25,7 +28,7 @@ namespace Sample01_OnlineShoping.Models.DomainModel.Services
                 try
                 {
 
-                    var q = context.Product.Include(p=> p.Category).ToList();
+                    var q = context.Product.Include(p => p.Category).ToList();
                     return q;
 
                 }
@@ -205,5 +208,37 @@ namespace Sample01_OnlineShoping.Models.DomainModel.Services
 
         }
         #endregion    }
+
+
+
+        #region [- ListCategory() -]
+        public List<Models.DomainModel.Aggregations.ProductAggregation.ProductCategory> ListCategory()
+        {
+            using (var context = new Models.EFCore.OnlineShopDbContext())
+            {
+                try
+                {
+
+                    var q = context.ProductCategory.ToList();
+                    return q;
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                finally
+                {
+                    if (context != null)
+                    {
+                        context.Dispose();
+                    }
+                }
+
+            }
+        }
+        #endregion 
+        #endregion
     }
 }

@@ -35,7 +35,8 @@ namespace Sample01_OnlineShoping.Models.ViewModels
         #region [- ShowDetails(int? id) -]
         public dynamic ShowDetails(int? id)
         {
-           var q = Infrastructure.Convertor.DtoConvertor(Ref_productcategoryservice.FindId(id));
+            var p = Ref_productcategoryservice.FindId(id);
+           var q = Infrastructure.Convertor.DtoConvertor(p);
            return q;
 
         }

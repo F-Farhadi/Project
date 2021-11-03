@@ -72,6 +72,32 @@ namespace Sample01_OnlineShoping.Infrastructure
 
             }
             return dtolist;
+        }
+        #endregion
+
+
+        #region [- DtoConvertor(Models.DomainModel.Aggregations.ProductAggregation.Product model) -]
+
+        public static Controllers.DTO.DTOProductController DtoConvertor(Models.DomainModel.Aggregations.ProductAggregation.Product model)
+        {
+            var dto = new Controllers.DTO.DTOProductController();
+            dto.ID = model.ID;
+            dto.ProductName = model.ProductName;
+            dto.Code = model.Code;
+            dto.CategoryRef = model.CategoryRef;
+            dto.UnitPrice = model.UnitPrice;
+            return dto;
+        }
+        #endregion
+
+        #region [-  DtoConvertor(Models.DomainModel.Aggregations.ProductAggregation.ProductCategory model) -]
+        public static Controllers.DTO.DTOCategoryProductController DtoConvertor(Models.DomainModel.Aggregations.ProductAggregation.ProductCategory model)
+        {
+            var dto = new Controllers.DTO.DTOCategoryProductController();
+            dto.ID = model.ID;
+            dto.Title = model.Title;
+            dto.Code = model.Code;
+            return dto;
         } 
         #endregion
     }
